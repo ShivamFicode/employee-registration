@@ -1,0 +1,47 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "register": [
+    {
+      "id": "a111",
+      "name": "sd",
+      "age": "95",
+      "gender": "dfd",
+      "contact": "9999999999",
+      "email": "shivam@gmail.com",
+      "password": "12"
+    },
+    {
+      "id": "c7ac",
+      "name": "lk",
+      "age": "45",
+      "gender": "sfd",
+      "contact": "9999999999",
+      "email": "shivam@gmail.com",
+      "password": "22"
+    },
+    {
+      "id": "aaa6",
+      "name": "shivam",
+      "age": "24",
+      "gender": "male",
+      "contact": "9465656959",
+      "email": "shivamjain@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1710",
+      "name": "Shivam jain",
+      "age": "25",
+      "gender": "male",
+      "contact": "9465656959",
+      "email": "shivam1@gmail.com",
+      "password": "12"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+<body>
+  <div class="container">
+    <div class="nav-tabs">
+      <button
+        [class.active]="isLogin"
+        (click)="isLogin = true; this.errMsg = {}"
+      >
+        Login
+      </button>
+      <button
+        [class.active]="!isLogin"
+        (click)="isLogin = false; this.errMsg = {}"
+      >
+        Sign Up
+      </button>
+    </div>
+
+    <div class="form-container">
+      <h2 *ngIf="isLogin">Login</h2>
+      <h2 *ngIf="!isLogin">Sign Up</h2>
+
+      <form [formGroup]="isLogin ? loginData : signupData">
+        <div *ngIf="!isLogin">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              placeholder="Enter your full name"
+              required
+              (blur)="updateErrMsg('name')"
+            />
+            @if (errMsg['name']) {
+            <small class="danger">{{ errMsg["name"] }}</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input
+              type="text"
+              id="age"
+              formControlName="age"
+              placeholder="Enter your age"
+              required
+              (blur)="updateErrMsg('age')"
+            />
+            @if (errMsg['age']) {
+            <small class="danger">{{ errMsg["age"] }}</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input
+              type="text"
+              id="gender"
+              formControlName="gender"
+              placeholder="Enter your gender"
+              required
+              (blur)="updateErrMsg('gender')"
+            />
+            @if (errMsg['gender']) {
+            <small class="danger">{{ errMsg["gender"] }}</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Phone Number</label>
+            <input
+              type="tel"
+              id="contact"
+              formControlName="contact"
+              placeholder="Enter your contact number"
+              required
+              (blur)="updateErrMsg('contact')"
+            />
+            @if (errMsg['contact']) {
+            <small class="danger">{{ errMsg["contact"] }}</small>
+            }
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            required
+            (blur)="updateErrMsg('email')"
+          />
+          @if (errMsg['email']) {
+          <small class="danger">{{ errMsg["email"] }}</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            required
+            (blur)="updateErrMsg('password')"
+          />
+          @if (errMsg['password']) {
+          <small class="danger">{{ errMsg["password"] }}</small>
+          }
+        </div>
+
+        <div *ngIf="!isLogin">
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              formControlName="confirmPass"
+              placeholder="Confirm password"
+              required
+              (blur)="updateErrMsg('confirmPass')"
+            />
+            @if (errMsg['confirmPass']) {
+            <small class="danger">{{ errMsg["confirmPass"] }}</small>
+            }
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          (click)="isLogin ? login() : signup()"
+          class="btn"
+          [disabled]="isLogin ? loginData.invalid : signupData.invalid"
+        >
+          {{ isLogin ? "Sign In" : "Sign Up" }}
+        </button>
+        @if (isLogin && errMsg['login']) {
+        <small class="danger">{{ errMsg["login"] }}</small>
+        }
+
+        <div class="form-footer">
+          <p *ngIf="isLogin">
+            Don't have an account?
+            <a (click)="isLogin = false">Sign Up</a>
+          </p>
+          <p *ngIf="!isLogin">
+            Already have an account?
+            <a (click)="isLogin = true">Login</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
